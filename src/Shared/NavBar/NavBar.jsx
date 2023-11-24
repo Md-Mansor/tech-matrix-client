@@ -16,7 +16,7 @@ const NavBar = () => {
 
     return (
         <div className=" ">
-            <div className="navbar fixed z-50  bg-gradient-to-r from-zinc-500 to-slate-300  max-w-screen-xl text-5xl  opacity-90  font-bold text-black">
+            <div className="navbar fixed z-50  bg-gradient-to-r from-zinc-500 to-slate-300  max-w-screen-2xl text-5xl  opacity-90  font-bold text-black">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -35,7 +35,7 @@ const NavBar = () => {
                 </div>
 
                 <div className="navbar-end">
-                    <a className="btn">login</a>
+                    <Link to="login" className="btn">login</Link>
                 </div>
             </div>
         </div>
