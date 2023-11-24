@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+// import { FaHome } from "react-icons/fa";
 
 
 const NavBar = () => {
@@ -6,12 +7,16 @@ const NavBar = () => {
     const navItems =
         <>
 
+            {/* <Link to="/"> <FaHome /> </Link> */}
+            <Link to="/">Home</Link>
+            <Link to="/product">Product</Link>
+
         </>
 
 
     return (
         <div className=" ">
-            <div className="navbar fixed z-20 bg-zinc-900  max-w-screen-xl bg-opacity-60 text-white ">
+            <div className="navbar fixed z-50  bg-gradient-to-r from-zinc-500 to-slate-300  max-w-screen-xl text-5xl  opacity-90  font-bold text-black">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -21,15 +26,16 @@ const NavBar = () => {
                             {navItems}
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost text-xl">Tech Touch</Link>
+                    <Link to='/' className="btn btn-ghost text-xl">Tech Matrix</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <div className="menu text-3xl  font-semibold menu-horizontal px-1">
                         {navItems}
-                    </ul>
+                    </div>
                 </div>
+
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    <a className="btn">login</a>
                 </div>
             </div>
         </div>
