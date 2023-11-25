@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 const Log = () => {
     return (
@@ -24,12 +25,12 @@ const Log = () => {
                                 <input type="password" placeholder="password" name="password" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-outline btn-primary" type="submit" value="Login" />
+                                <input className="btn btn-outline btn-info" type="submit" value="Login" />
                             </div>
                         </form>
-                        <div className="flex flex-col gap-1 justify-center  items-center">
-                            <p className="">Or Login With</p>
-                            <img src="" alt="google" className="w-16 h-16 hover:cursor-pointer" />
+                        <div className="flex items-center justify-center gap-4 font-semibold text-2xl my-4 border  rounded-full" >
+                            <FcGoogle />
+                            <p>Login With Google</p>
                         </div>
                         <h1 className="text-center border p-2 text-lg font-medium  ">New In This Page <Link to="/register" className="hover:text-rose-700 " >Register Now </Link> </h1>
                     </div>
