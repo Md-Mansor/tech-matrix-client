@@ -1,8 +1,26 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 // import { FaHome } from "react-icons/fa";
+import { TbLogout2 } from "react-icons/tb";
+import { MdDashboardCustomize } from "react-icons/md";
+
+
 
 
 const NavBar = () => {
+
+    const { logOut, user } = useContext(AuthContext);
+
+    const handelLogout = () => {
+        logOut()
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
     const navItems =
         <>
@@ -35,7 +53,37 @@ const NavBar = () => {
                 </div>
 
                 <div className="navbar-end">
-                    <Link to="login" className="btn">login</Link>
+                    {
+                        user ? (
+                            <div>
+                                <div className="dropdown dropdown-end">
+                                    <label tabIndex={0} className="">
+                                        <div className="flex flex-col-reverse items-center cursor-pointer gap-1">
+                                            <img src={user?.photoURL} alt="" className="rounded-full w-12 h-12" />
+                                        </div>
+                                    </label>
+                                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                        <div className="flex flex-col items-start gap-2">
+                                            <div>
+                                                <a className="text-lg">{user?.displayName}</a>
+                                            </div>
+                                            <div>
+                                                <Link to="/dashboard" className="flex gap-2 items-center text-lg"><span>
+                                                    <MdDashboardCustomize />
+                                                </span>Dashboard</Link>
+                                            </div>
+
+                                            <button className="flex gap-2 items-center text-lg" onClick={handelLogout}><span>
+                                                <TbLogout2 />
+                                            </span>Log Out</button>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        ) :
+                            <Link to='login' className="btn btn-outline btn-info">Log In</Link>
+
+                    }
                 </div>
             </div>
         </div>

@@ -64,7 +64,7 @@ const Log = () => {
                                 <input onSubmit={handelEmailLogin} className="btn btn-outline btn-info" type="submit" value="Login" />
                             </div>
                         </form>
-                        <div onClick={handelGoogleLog} className="flex items-center justify-center gap-4 font-semibold text-2xl my-4 border  rounded-full" >
+                        <div onClick={handelGoogleLog} className="flex items-center cursor-pointer justify-center gap-4 font-semibold text-2xl my-4 border  rounded-full" >
                             <FcGoogle />
                             <p>Login With Google</p>
                         </div>
