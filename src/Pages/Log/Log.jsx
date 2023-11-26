@@ -1,7 +1,43 @@
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import app from "../../Firebase/Firebase.config";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
+
 
 const Log = () => {
+    const { logIn } = useContext(AuthContext);
+    const google = new GoogleAuthProvider();
+
+    const auth = getAuth(app)
+    const handelGoogleLog = () => {
+        signInWithPopup(auth, google)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('Login Successful')
+            })
+    }
+    const handelEmailLogin = event => {
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.event.value;
+        console.log(email, password);
+
+        logIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('User Login Successfully')
+            })
+    }
     return (
         <div>
             <div className="hero min-h-screen bg-sky-100">
@@ -25,10 +61,10 @@ const Log = () => {
                                 <input type="password" placeholder="password" name="password" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-outline btn-info" type="submit" value="Login" />
+                                <input onSubmit={handelEmailLogin} className="btn btn-outline btn-info" type="submit" value="Login" />
                             </div>
                         </form>
-                        <div className="flex items-center justify-center gap-4 font-semibold text-2xl my-4 border  rounded-full" >
+                        <div onClick={handelGoogleLog} className="flex items-center justify-center gap-4 font-semibold text-2xl my-4 border  rounded-full" >
                             <FcGoogle />
                             <p>Login With Google</p>
                         </div>
@@ -36,6 +72,7 @@ const Log = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
