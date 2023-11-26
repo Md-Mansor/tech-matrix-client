@@ -6,6 +6,11 @@ import Home from "../Pages/Home/Home";
 import Product from "../Pages/Product/Product";
 import Log from "../Pages/Log/Log";
 import Register from "../Pages/Register/Register";
+import Dashboard from "../Layout/Dashboard/Dashboard";
+import Cart from "../Layout/Dashboard/Cart/Cart";
+import MyProduct from "../Layout/Dashboard/MyProduct/MyProduct";
+import MyProfile from "../Layout/Dashboard/MyProfile/MyProfile";
+
 
 export const router = createBrowserRouter([
     {
@@ -17,17 +22,35 @@ export const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: "/product",
+                path: "product",
                 element: <Product></Product>
             },
             {
-                path: "/login",
+                path: "login",
                 element: <Log></Log>
             },
             {
-                path: "/register",
+                path: "register",
                 element: <Register></Register>
             }
         ]
     },
+    {
+        path: "dashboard",
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: "profile",
+                element: <MyProfile></MyProfile>
+            },
+            {
+                path: "add",
+                element: <Cart></Cart>
+            },
+            {
+                path: "product",
+                element: <MyProduct></MyProduct>
+            }
+        ]
+    }
 ]);
