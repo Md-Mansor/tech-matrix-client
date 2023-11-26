@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { MdAddShoppingCart } from "react-icons/md";
 import { MdProductionQuantityLimits } from "react-icons/md";
+import { HiHome } from "react-icons/hi2";
 import { ImProfile } from "react-icons/im";
 
 
@@ -27,6 +28,15 @@ const Dashboard = () => {
                         <NavLink to='/dashboard/product'>
                             <MdProductionQuantityLimits />
                             My Product
+                        </NavLink>
+                    </li>
+                </ul>
+                <div className="divider divider-info">Web UI</div>
+                <ul className="menu p-3 text-lg font-semibold">
+                    <li>
+                        <NavLink to="/">
+                            <HiHome />
+                            Home
                         </NavLink>
                     </li>
                 </ul>

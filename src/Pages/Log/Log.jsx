@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -14,13 +14,15 @@ import 'react-toastify/dist/ReactToastify.css';
 const Log = () => {
     const { logIn } = useContext(AuthContext);
     const google = new GoogleAuthProvider();
-
+    const navigate = useNavigate()
     const auth = getAuth(app)
+
     const handelGoogleLog = () => {
         signInWithPopup(auth, google)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate('/')
                 toast.success('Login Successful')
             })
     }
@@ -35,6 +37,7 @@ const Log = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate('/')
                 toast.success('User Login Successfully')
             })
     }
