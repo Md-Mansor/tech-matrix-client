@@ -4,50 +4,81 @@ import { MdProductionQuantityLimits } from "react-icons/md";
 import { HiHome } from "react-icons/hi2";
 import { ImProfile } from "react-icons/im";
 import { FaUsers } from "react-icons/fa6";
+import { FcStatistics } from "react-icons/fc";
+import { IoTicketSharp } from "react-icons/io5";
+
+
 
 const Dashboard = () => {
+
+    const isAdmin = true;
     return (
         <div className="flex">
             <div className="w-64 min-h-screen bg-slate-700 text-white">
                 <h1 className="font-extrabold text-center">my dashboard</h1>
                 <ul className="menu p-3 text-lg font-semibold">
-                    <li >
-                        <NavLink to='/dashboard/profile'>
-                            <ImProfile />
-                            My Profile
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/dashboard/add'>
-                            <MdAddShoppingCart />
-                            Add Product
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/dashboard/product'>
-                            <MdProductionQuantityLimits />
-                            My Product
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/dashboard/product'>
-                            <MdProductionQuantityLimits />
-                            My Product
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/dashboard/product'>
-                            <MdProductionQuantityLimits />
-                            My Product
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/dashboard/users'>
-                            <FaUsers />
-                            All Users
-                        </NavLink>
-                    </li>
+
+                    {
+                        isAdmin ?
+                            <>
+                                {/* admin route */}
+                                <li>
+                                    <NavLink to='/dashboard/users'>
+                                        <FaUsers />
+                                        Manage Users
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/dashboard/statistics'>
+                                        <FcStatistics />
+                                        Statistics
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/dashboard/coupons'>
+                                        <IoTicketSharp></IoTicketSharp>
+                                        Manage Coupons
+                                    </NavLink>
+                                </li>
+                            </>
+                            :
+                            <>
+                                {/* moderate route */}
+                                <li>
+                                    <NavLink to="/dashboard/review">
+                                        Product Review Queue
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/report">
+                                        Reported Contents
+                                    </NavLink>
+                                </li>
+                                {/* user Route  */}
+                                <li >
+                                    <NavLink to='/dashboard/profile'>
+                                        <ImProfile />
+                                        My Profile
+                                    </NavLink>
+                                </li>
+
+                                <li>
+                                    <NavLink to='/dashboard/add'>
+                                        <MdAddShoppingCart />
+                                        Add Product
+                                    </NavLink>
+                                </li>
+
+                                <li>
+                                    <NavLink to='/dashboard/product'>
+                                        <MdProductionQuantityLimits />
+                                        My Product
+                                    </NavLink>
+                                </li>
+                            </>
+                    }
                 </ul>
+                {/* Shared Nav Link */}
                 <div className="divider divider-info">Web UI</div>
                 <ul className="menu p-3 text-lg font-semibold">
                     <li>

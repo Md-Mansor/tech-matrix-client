@@ -47,6 +47,7 @@ const Register = () => {
                 toast.success('User created');
 
                 const userInfo = {
+                    name: name,
                     email: email,
                     password: password,
                 };
