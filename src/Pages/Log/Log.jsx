@@ -6,6 +6,7 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../Firebase/Firebase.config";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 
 
@@ -16,16 +17,35 @@ const Log = () => {
     const google = new GoogleAuthProvider();
     const navigate = useNavigate()
     const auth = getAuth(app)
+    const axiosPublic = useAxiosPublic();
 
+    // google Login
     const handelGoogleLog = () => {
         signInWithPopup(auth, google)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate('/')
-                toast.success('Login Successful')
+                const userInfo = {
+                    email: user?.email,
+                    name: user?.displayName,
+                }
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    })
+                    .finally(() => {
+                        navigate('/')
+                        toast.success('Login Successful')
+                    });
+
             })
     }
+
+
+
     const handelEmailLogin = event => {
         event.preventDefault()
         const form = event.target;

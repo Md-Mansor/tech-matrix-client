@@ -4,10 +4,12 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import useAxiosPublic from "../../Hook/useAxiosPublic";
+
 
 const Register = () => {
 
-
+    const axiosPublic = useAxiosPublic()
     const { createUser } = useContext(AuthContext);
     const [registerError, setRegisterError] = useState('');
     const [success, setSuccess] = useState('');
@@ -38,19 +40,32 @@ const Register = () => {
         //     return;
         // }
 
-
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('user created')
-                navigate('/')
+                toast.success('User created');
 
+                const userInfo = {
+                    email: email,
+                    password: password,
+                };
+
+                axiosPublic.post('/users', userInfo)
+                    .then(response => {
+                        console.log(response.data);
+                    })
+                    .catch(error => {
+                        console.error('Error posting user data:', error);
+                    })
+                    .finally(() => {
+                        navigate('/');
+                    });
             })
             .catch(error => {
-                console.error(error);
-                toast.error('user Already exist')
-            })
+                console.error('Error creating user:', error);
+            });
+
 
     }
 
