@@ -3,8 +3,7 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { MdProductionQuantityLimits } from "react-icons/md";
 import { HiHome } from "react-icons/hi2";
 import { ImProfile } from "react-icons/im";
-
-
+import { FaUsers } from "react-icons/fa6";
 
 const Dashboard = () => {
     return (
@@ -28,6 +27,24 @@ const Dashboard = () => {
                         <NavLink to='/dashboard/product'>
                             <MdProductionQuantityLimits />
                             My Product
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/dashboard/product'>
+                            <MdProductionQuantityLimits />
+                            My Product
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/dashboard/product'>
+                            <MdProductionQuantityLimits />
+                            My Product
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/dashboard/users'>
+                            <FaUsers />
+                            All Users
                         </NavLink>
                     </li>
                 </ul>
