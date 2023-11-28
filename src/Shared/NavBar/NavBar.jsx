@@ -21,7 +21,7 @@ const NavBar = () => {
                 console.log(error);
             })
     }
-
+    console.log(user);
     const navItems =
         <>
 
@@ -65,7 +65,7 @@ const NavBar = () => {
                                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                         <div className="flex flex-col items-start gap-2">
                                             <div>
-                                                <a className="text-lg">{user?.displayName}</a>
+                                                <a className="text-lg">{user?.displayName ?? user?.name}</a>
                                             </div>
                                             <div>
                                                 <Link to="/dashboard" className="flex gap-2 items-center text-lg"><span>

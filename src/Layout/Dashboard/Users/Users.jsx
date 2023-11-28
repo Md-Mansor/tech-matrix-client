@@ -16,15 +16,17 @@ const Users = () => {
     console.log(users);
 
     const handleDeleteUser = (user) => {
+        console.log(user._id);
         axiosSecure.delete(`/users/${user._id}`)
             .then((res) => {
-                if (res.data.deleteCount > 0) {
+                console.log(res);
+                if (res.data.deletedCount > 0) {
                     refetch();
                 }
             })
-            .catch((error) => {
-                console.error("Error deleting user:", error);
-            });
+            .catch(err => {
+                console.log(err);
+            })
     };
 
     return (
@@ -50,8 +52,16 @@ const Users = () => {
                                     <th>{idx + 1}</th>
                                     <td>{user?.name ?? user?.displayName}</td>
                                     <td>{user?.email}</td>
-                                    <td><button className="btn btn-outline btn-md w-16 btn-error"><FaUsers></FaUsers></button></td>
-                                    <td><button onClick={() => handleDeleteUser(users)} className="btn btn-outline btn-md w-16 btn-error"><FaTrashAlt></FaTrashAlt></button></td>
+                                    <td>
+                                        <button className="btn btn-outline btn-md w-16 btn-error">
+                                            <FaUsers></FaUsers>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button onClick={() => handleDeleteUser(user)} className="btn btn-outline btn-md w-16 btn-error">
+                                            <FaTrashAlt></FaTrashAlt>
+                                        </button>
+                                    </td>
                                 </tr>)
                             }
                         </tbody>
