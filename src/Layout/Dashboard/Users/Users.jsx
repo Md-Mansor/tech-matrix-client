@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPrivate from "../../../Hook/useAxiosPrivate";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
+import { useState } from "react";
 
 
 
@@ -14,9 +15,28 @@ const Users = () => {
         }
     })
     console.log(users);
+    const [selectedRole, setSelectedRole] = useState('user');
+
+
+    const handleRoleChange = (user) => {
+        axiosSecure.patch(`/users/admin/${user._id}`)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+    const handleDropdownChange = (event) => {
+        setSelectedRole(event.target.value);
+    };
+
 
     const handleDeleteUser = (user) => {
-        console.log(user._id);
+        // console.log(user._id);
         axiosSecure.delete(`/users/${user._id}`)
             .then((res) => {
                 console.log(res);
@@ -57,9 +77,17 @@ const Users = () => {
                                     <td>{user?.name ?? user?.displayName}</td>
                                     <td>{user?.email}</td>
                                     <td>
-                                        <button className="btn btn-outline btn-md w-16 btn-error">
-                                            <FaUsers></FaUsers>
-                                        </button>
+                                        {user.role === "admin" ? "Admin" : (
+                                            <div>
+                                                <select value={selectedRole} onChange={handleDropdownChange}>
+                                                    <option value="admin">Admin</option>
+                                                    <option value="moderator">Moderator</option>
+                                                </select>
+                                                <button onClick={() => handleRoleChange(user)} className="btn btn-outline btn-md w-16 btn-error">
+                                                    <FaUsers></FaUsers>
+                                                </button>
+                                            </div>)
+                                        }
                                     </td>
                                     <td>
                                         <button onClick={() => handleDeleteUser(user)} className="btn btn-outline btn-md w-16 btn-error">
@@ -72,7 +100,7 @@ const Users = () => {
                     </table>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
