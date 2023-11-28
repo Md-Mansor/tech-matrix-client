@@ -11,6 +11,10 @@ import Cart from "../Layout/Dashboard/Cart/Cart";
 import MyProduct from "../Layout/Dashboard/MyProduct/MyProduct";
 import MyProfile from "../Layout/Dashboard/MyProfile/MyProfile";
 import Users from "../Layout/Dashboard/Users/Users";
+import Statistics from "../Layout/Dashboard/Statistics/Statistics";
+import Coupons from "../Layout/Dashboard/Coupons/Coupons";
+import Review from "../Layout/Dashboard/Review/Review";
+import Report from "../Layout/Dashboard/Report/Report";
 
 
 export const router = createBrowserRouter([
@@ -55,6 +59,22 @@ export const router = createBrowserRouter([
             {
                 path: "users",
                 element: <Users></Users>
+            },
+            {
+                path: "statistics",
+                element: <Statistics></Statistics>
+            },
+            {
+                path: "coupons",
+                element: <Coupons></Coupons>
+            },
+            {
+                path: "review",
+                element: <Review></Review>
+            },
+            {
+                path: "report",
+                element: <Report></Report>
             }
         ]
     }

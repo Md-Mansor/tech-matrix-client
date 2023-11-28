@@ -31,10 +31,14 @@ const Users = () => {
 
     return (
         <div>
-            <h1>Total Users :{users.length}</h1>
-            <div>
+            <div className="flex justify-evenly m-5 bg-slate-400 p-3 rounded">
+                <h1 className="text-3xl">All Users</h1>
+                <h1 className="text-3xl">Total Users :{users.length}</h1>
+            </div>
+
+            <div className="m-5">
                 <div className="overflow-x-auto">
-                    <table className="table table-zebra">
+                    <table className="table table-zebra w-full">
                         {/* head */}
                         <thead>
                             <tr>

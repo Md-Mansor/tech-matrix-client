@@ -37,8 +37,8 @@ const Log = () => {
                         console.error(error);
                     })
                     .finally(() => {
-                        navigate('/')
                         toast.success('Login Successful')
+                        navigate('/')
                     });
 
             })
@@ -57,8 +57,8 @@ const Log = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate('/')
                 toast.success('User Login Successfully')
+                navigate('/')
             })
     }
     return (

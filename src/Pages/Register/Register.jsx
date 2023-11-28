@@ -44,7 +44,7 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('User created');
+
 
                 const userInfo = {
                     name: name,
@@ -60,6 +60,7 @@ const Register = () => {
                         console.error('Error posting user data:', error);
                     })
                     .finally(() => {
+                        toast.success('User created');
                         navigate('/');
                     });
             })
