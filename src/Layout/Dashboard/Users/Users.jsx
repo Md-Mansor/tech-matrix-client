@@ -13,7 +13,7 @@ const Users = () => {
             return result.data;
         }
     })
-    console.log(users);
+    // console.log(users);
 
 
     const handleRoleChange = (user) => {

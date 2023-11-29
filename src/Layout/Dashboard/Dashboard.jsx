@@ -22,7 +22,7 @@ const Dashboard = () => {
     return (
         <div className=" lg:flex ">
             <div className="lg:w-64 min-h-screen bg-slate-700 text-white">
-                <h1 className="font-extrabold text-center">my dashboard</h1>
+                <h1 className="font-bold text-2xl text-center uppercase m-5">dashboard</h1>
                 <ul className="menu p-3 text-lg font-semibold">
                     {/* admin route */}
                     {role === "admin" && (
