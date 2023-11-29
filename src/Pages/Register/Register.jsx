@@ -50,6 +50,7 @@ const Register = () => {
                     name: name,
                     email: email,
                     password: password,
+                    role: "user"
                 };
 
                 axiosPublic.post('/users', userInfo)

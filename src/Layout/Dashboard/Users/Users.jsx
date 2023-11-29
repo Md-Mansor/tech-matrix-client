@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPrivate from "../../../Hook/useAxiosPrivate";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
-import { useState } from "react";
 
 
 
@@ -15,7 +14,6 @@ const Users = () => {
         }
     })
     console.log(users);
-    const [selectedRole, setSelectedRole] = useState('user');
 
 
     const handleRoleChange = (user) => {
@@ -30,9 +28,7 @@ const Users = () => {
                 console.log(error);
             })
     }
-    const handleDropdownChange = (event) => {
-        setSelectedRole(event.target.value);
-    };
+
 
 
     const handleDeleteUser = (user) => {
@@ -79,10 +75,6 @@ const Users = () => {
                                     <td>
                                         {user.role === "admin" ? "Admin" : (
                                             <div>
-                                                <select value={selectedRole} onChange={handleDropdownChange}>
-                                                    <option value="admin">Admin</option>
-                                                    <option value="moderator">Moderator</option>
-                                                </select>
                                                 <button onClick={() => handleRoleChange(user)} className="btn btn-outline btn-md w-16 btn-error">
                                                     <FaUsers></FaUsers>
                                                 </button>

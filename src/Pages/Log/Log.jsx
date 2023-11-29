@@ -28,6 +28,7 @@ const Log = () => {
                 const userInfo = {
                     email: user?.email,
                     name: user?.displayName,
+                    role: "user"
                 }
                 axiosPublic.post('/users', userInfo)
                     .then(res => {

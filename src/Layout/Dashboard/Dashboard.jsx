@@ -8,6 +8,7 @@ import { FcStatistics } from "react-icons/fc";
 import { IoTicketSharp } from "react-icons/io5";
 import { MdReviews } from "react-icons/md";
 import { MdReportProblem } from "react-icons/md";
+import useRole from "../../Hook/useRole";
 
 
 
@@ -15,15 +16,16 @@ import { MdReportProblem } from "react-icons/md";
 
 const Dashboard = () => {
 
-    const isAdmin = true;
-    const isModerator = true;
+    const userDb = useRole();
+    const role = userDb?.role;
+    console.log(role);
     return (
         <div className=" lg:flex ">
             <div className="lg:w-64 min-h-screen bg-slate-700 text-white">
                 <h1 className="font-extrabold text-center">my dashboard</h1>
                 <ul className="menu p-3 text-lg font-semibold">
                     {/* admin route */}
-                    {isAdmin && (
+                    {role === "admin" && (
                         <>
                             <li>
                                 <NavLink to='/dashboard/users'>
@@ -46,7 +48,7 @@ const Dashboard = () => {
                         </>
                     )}
                     {/* moderator route */}
-                    {isModerator && (
+                    {role === "moderator" && (
                         <>
                             <li>
                                 <NavLink to="/dashboard/review">
@@ -64,7 +66,7 @@ const Dashboard = () => {
                     )}
 
                     {/* user Route  */}
-                    {!isAdmin && !isModerator && (
+                    {role === "user" && (
                         <>
                             <li>
                                 <NavLink to='/dashboard/profile'>
@@ -95,6 +97,12 @@ const Dashboard = () => {
                         <NavLink to="/">
                             <HiHome />
                             Home
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/product">
+                            <MdProductionQuantityLimits />
+                            Products
                         </NavLink>
                     </li>
                 </ul>

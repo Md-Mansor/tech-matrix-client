@@ -15,6 +15,7 @@ import Statistics from "../Layout/Dashboard/Statistics/Statistics";
 import Coupons from "../Layout/Dashboard/Coupons/Coupons";
 import Review from "../Layout/Dashboard/Review/Review";
 import Report from "../Layout/Dashboard/Report/Report";
+import PrivateRouter from "./PrivateRouter";
 
 
 export const router = createBrowserRouter([
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
     },
     {
         path: "dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRouter> <Dashboard></Dashboard></PrivateRouter>,
         children: [
             {
                 path: "profile",
