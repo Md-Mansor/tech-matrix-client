@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 
 const Product = () => {
@@ -39,7 +40,7 @@ const Product = () => {
                                 <p>Price : $ {product.Price}</p>
                                 <div className="card-actions">
                                     <button className="btn btn-primary">Buy Now</button>
-                                    <button className="btn btn-primary">Details</button>
+                                    <Link to={`/products/${product._id}`} className="btn btn-primary">Details</Link>
                                 </div>
                             </div>
                         </div>
