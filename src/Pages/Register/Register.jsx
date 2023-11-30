@@ -25,7 +25,7 @@ const Register = () => {
 
         setRegisterError('')
         setSuccess('')
-        console.log(name, email, password);
+        // console.log(name, email, password);
 
         // if (password.length < 6) {
         //     toast.error('password must be at least 6 character')
@@ -52,6 +52,7 @@ const Register = () => {
                     password: password,
                     role: "user"
                 };
+                console.log(userInfo);
 
                 axiosPublic.post('/users', userInfo)
                     .then(response => {
@@ -61,9 +62,9 @@ const Register = () => {
                         console.error('Error posting user data:', error);
                     })
                     .finally(() => {
-                        toast.success('User created');
                         navigate('/');
                     });
+                toast.success('User created');
             })
             .catch(error => {
                 console.error('Error creating user:', error);
@@ -88,7 +89,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Name:</span>
                                 </label>
-                                <input type="name" placeholder="name" name="name" className="input input-bordered" required />
+                                <input type="text" placeholder="name" name="name" className="input input-bordered" required />
                             </div >
                             <div className="form-control">
                                 <label className="label">

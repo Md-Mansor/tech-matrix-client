@@ -58,7 +58,7 @@ const Review = () => {
                                     )}</td>
 
 
-                                    <td>{product.status === "Verified" ? "Verified" : (
+                                    <td>{product.status === "verified" ? "verified" : (
                                         <div>
                                             <button className="btn btn-secondary">Pending</button>
                                         </div>

@@ -30,7 +30,7 @@ const Product = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
                 {
-                    products.map(product => <div key={products.id} className="hover:shadow-amber-200 transition duration-300 ease-in-out">
+                    products.map(product => <div key={product._id} className="hover:shadow-amber-200 transition duration-300 ease-in-out">
                         <div className="card shadow-xl">
                             <figure className="px-10 pt-10">
                                 <img src={product.image} alt="Shoes" className="rounded-xl" />

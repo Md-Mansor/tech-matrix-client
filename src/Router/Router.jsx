@@ -16,6 +16,7 @@ import Coupons from "../Layout/Dashboard/Coupons/Coupons";
 import Review from "../Layout/Dashboard/Review/Review";
 import Report from "../Layout/Dashboard/Report/Report";
 import PrivateRouter from "./PrivateRouter";
+import ProductDetails from "../Pages/Product/ProductDetails";
 
 
 export const router = createBrowserRouter([
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
             {
                 path: "product",
                 element: <Product></Product>
+            },
+            {
+                path: "/products/:id",
+                element: <ProductDetails></ProductDetails>
             },
             {
                 path: "login",
