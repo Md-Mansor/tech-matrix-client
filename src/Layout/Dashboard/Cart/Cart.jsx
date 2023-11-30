@@ -7,12 +7,12 @@ const Cart = () => {
     const handelAdd = event => {
         event.preventDefault()
         const form = event.target;
-        const Name = form.name.value;
-        const Price = form.price.value;
-        const Brand = form.brand.value;
-        const Image = form.image.value;
-        const Description = form.Features.value;
-        const productDetails = { Name, Price, Brand, Image, Description, Featured: "false" };
+        const name = form.name.value;
+        const price = form.price.value;
+        const brand = form.brand.value;
+        const image = form.image.value;
+        const description = form.description.value;
+        const productDetails = { name, price, brand, image, description, featured: "false", status: "pending" };
         console.log(productDetails);
         axios.post('http://localhost:5000/products', productDetails)
             .then(data => {
@@ -62,7 +62,7 @@ const Cart = () => {
                                     <label className="label">
                                         <span className="label-text">Description </span>
                                     </label>
-                                    <textarea className="textarea textarea-error" name="Features" placeholder="Features"></textarea>
+                                    <textarea className="textarea textarea-error" name="description" placeholder="Features"></textarea>
                                 </div>
                                 <div className="form-control mt-6">
                                     <input className="btn btn-outline btn-error" type="submit" value="Add Now" />

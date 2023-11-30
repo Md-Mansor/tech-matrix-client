@@ -33,11 +33,11 @@ const Product = () => {
                     products.map(product => <div key={products.id} className="hover:shadow-amber-200 transition duration-300 ease-in-out">
                         <div className="card shadow-xl">
                             <figure className="px-10 pt-10">
-                                <img src={product.Image} alt="Shoes" className="rounded-xl" />
+                                <img src={product.image} alt="Shoes" className="rounded-xl" />
                             </figure>
                             <div className="card-body items-center text-center">
-                                <h2 className="card-title">{product.Name}</h2>
-                                <p>Price : $ {product.Price}</p>
+                                <h2 className="card-title">{product.name}</h2>
+                                <p>Price : $ {product.price}</p>
                                 <div className="card-actions">
                                     <button className="btn btn-primary">Buy Now</button>
                                     <Link to={`/products/${product._id}`} className="btn btn-primary">Details</Link>
