@@ -16,7 +16,7 @@ const Users = () => {
     // console.log(users);
 
 
-    const handleRoleChange = (user) => {
+    const handleMakeAdmin = (user) => {
         axiosSecure.patch(`/users/admin/${user._id}`)
             .then(res => {
                 console.log(res.data);
@@ -26,6 +26,19 @@ const Users = () => {
             })
             .catch(error => {
                 console.log(error);
+            })
+    }
+
+    const handleMakeModerator = (user) => {
+        axiosSecure.patch(`/users/moderator/${user._id}`)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.modifiedCount > 0) {
+                    refetch()
+                }
+            })
+            .catch(error => {
+                console.error(error);
             })
     }
 
@@ -61,7 +74,8 @@ const Users = () => {
                                 <th>Sl</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Role</th>
+                                <th>Make Admin</th>
+                                <th>Make Moderator</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -75,7 +89,16 @@ const Users = () => {
                                     <td>
                                         {user.role === "admin" ? "Admin" : (
                                             <div>
-                                                <button onClick={() => handleRoleChange(user)} className="btn btn-outline btn-md w-16 btn-error">
+                                                <button onClick={() => handleMakeAdmin(user)} className="btn btn-outline btn-md w-16 btn-error">
+                                                    <FaUsers></FaUsers>
+                                                </button>
+                                            </div>)
+                                        }
+                                    </td>
+                                    <td>
+                                        {user.role === "moderator" ? "Moderator" : (
+                                            <div>
+                                                <button onClick={() => handleMakeModerator(user)} className="btn btn-outline btn-md w-16 btn-error">
                                                     <FaUsers></FaUsers>
                                                 </button>
                                             </div>)

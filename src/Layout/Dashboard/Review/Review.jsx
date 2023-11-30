@@ -24,6 +24,17 @@ const Review = () => {
                 console.error(error);
             })
     }
+    const handelVerify = (product) => {
+        axiosSecure.patch(`/product/status/${product._id}`)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    refetch()
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
 
     return (
         <div>
@@ -60,7 +71,7 @@ const Review = () => {
 
                                     <td>{product.status === "verified" ? "verified" : (
                                         <div>
-                                            <button className="btn btn-secondary">Pending</button>
+                                            <button onClick={() => handelVerify(product)} className="btn btn-secondary">Pending</button>
                                         </div>
                                     )}
                                     </td>

@@ -45,13 +45,11 @@ const Log = () => {
             })
     }
 
-
-
-    const handelEmailLogin = event => {
-        event.preventDefault()
-        const form = event.target;
+    const handelEmailLogin = (e) => {
+        e.preventDefault();
+        const form = e.target;
         const email = form.email.value;
-        const password = form.event.value;
+        const password = form.password.value;
         console.log(email, password);
 
         logIn(email, password)
@@ -61,6 +59,7 @@ const Log = () => {
                 toast.success('User Login Successfully')
                 navigate('/')
             })
+
     }
     return (
         <div>
@@ -70,7 +69,7 @@ const Log = () => {
                         <img src="" alt="" />
                     </div>
                     <div className=" rounded-md flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form className="card-body">
+                        <form className="card-body" onSubmit={handelEmailLogin}>
                             <h1 className="text-3xl text-center font-semibold">Log In</h1>
                             <div className="form-control">
                                 <label className="label">
@@ -85,7 +84,7 @@ const Log = () => {
                                 <input type="password" placeholder="password" name="password" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
-                                <input onSubmit={handelEmailLogin} className="btn btn-outline btn-info" type="submit" value="Login" />
+                                <input className="btn btn-outline btn-info" type="submit" value="Login" />
                             </div>
                         </form>
                         <div onClick={handelGoogleLog} className="flex items-center cursor-pointer justify-center gap-4 font-semibold text-2xl my-4 border  rounded-full" >

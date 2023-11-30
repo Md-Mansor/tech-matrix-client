@@ -26,8 +26,8 @@ const NavBar = () => {
         <>
 
             {/* <Link to="/"> <FaHome /> </Link> */}
-            <Link className="mx-5" to="/">Home</Link>
-            <Link to="/product">Product</Link>
+            <Link className="mx-3" to="/">Home</Link>
+            <Link className="mx-3" to="/product">Product</Link>
 
         </>
 

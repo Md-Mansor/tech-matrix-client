@@ -17,7 +17,7 @@ const Product = () => {
     const { data: products = [] } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const result = await axiosPublic.get('/products');
+            const result = await axiosPublic.get('/product/status');
             return result.data;
         }
     })
@@ -37,7 +37,7 @@ const Product = () => {
                             </figure>
                             <div className="card-body items-center text-center">
                                 <h2 className="card-title">{product.name}</h2>
-                                <p>Price : $ {product.price}</p>
+                                <p>Price :  {product?.price}</p>
                                 <div className="card-actions">
                                     <button className="btn btn-primary">Buy Now</button>
                                     <Link to={`/products/${product._id}`} className="btn btn-primary">Details</Link>
