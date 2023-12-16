@@ -1,7 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hook/useAxiosPublic";
 import { Link } from "react-router-dom";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const FeaturedProducts = () => {
     const axiosPublic = useAxiosPublic();
@@ -21,7 +24,8 @@ const FeaturedProducts = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 my-10 gap-5">
                 {
                     featured.map(features => <div key={features._id} className="card  glass">
-                        <figure><img src={features.image} alt="car!" /></figure>
+                        <figure data-aos="fade-up"
+                            data-aos-anchor-placement="top-center"><img src={features.image} alt="car!" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{features.name}</h2>
                             <p></p>
