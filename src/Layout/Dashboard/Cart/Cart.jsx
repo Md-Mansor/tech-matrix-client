@@ -14,7 +14,7 @@ const Cart = () => {
         const description = form.description.value;
         const productDetails = { name, price, brand, image, description, featured: "false", status: "pending" };
         console.log(productDetails);
-        axios.post('http://localhost:5000/products', productDetails)
+        axios.post('https://tech-matrix-server.vercel.app//products', productDetails)
             .then(data => {
                 console.log(data.data);
             })

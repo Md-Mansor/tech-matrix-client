@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const secure = axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://tech-matrix-server.vercel.app/",
     withCredentials: true
 })
 
