@@ -8,6 +8,7 @@ import { FcStatistics } from "react-icons/fc";
 import { IoTicketSharp } from "react-icons/io5";
 import { MdReviews } from "react-icons/md";
 import { MdReportProblem } from "react-icons/md";
+import { BsRecycle } from "react-icons/bs";
 import useRole from "../../Hook/useRole";
 
 
@@ -43,6 +44,12 @@ const Dashboard = () => {
                                 <NavLink to='/dashboard/coupons'>
                                     <IoTicketSharp></IoTicketSharp>
                                     Manage Coupons
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='deleted'>
+                                    <BsRecycle />
+                                    Recycle Bin
                                 </NavLink>
                             </li>
                         </>

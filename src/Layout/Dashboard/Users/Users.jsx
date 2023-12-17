@@ -44,18 +44,19 @@ const Users = () => {
 
 
 
-    const handleDeleteUser = (user) => {
-        // console.log(user._id);
-        axiosSecure.delete(`/users/${user._id}`)
-            .then((res) => {
-                console.log(res);
-                if (res.data.deletedCount > 0) {
-                    refetch();
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+    const handleDeleteUser = async (user) => {
+        try {
+            const res = await axiosSecure.delete(`/users/${user._id}`);
+            console.log(res);
+            if (res.data.deletedCount > 0) {
+                refetch();
+                // After deleting the user, save the deleted user in another path
+                await axiosSecure.post('/deletedUsers', { user });
+
+            }
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     return (

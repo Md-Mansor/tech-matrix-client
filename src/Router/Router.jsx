@@ -17,6 +17,7 @@ import Review from "../Layout/Dashboard/Review/Review";
 import Report from "../Layout/Dashboard/Report/Report";
 import PrivateRouter from "./PrivateRouter";
 import ProductDetails from "../Pages/Product/ProductDetails";
+import RecycleBin from "../Layout/Dashboard/RecycleBin/RecycleBin";
 
 
 export const router = createBrowserRouter([
@@ -81,6 +82,10 @@ export const router = createBrowserRouter([
             {
                 path: "report",
                 element: <Report></Report>
+            },
+            {
+                path: "deleted",
+                element: <RecycleBin></RecycleBin>
             }
         ]
     }
