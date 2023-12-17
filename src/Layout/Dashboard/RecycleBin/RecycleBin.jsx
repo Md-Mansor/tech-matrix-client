@@ -6,15 +6,31 @@ import { MdRestorePage } from "react-icons/md";
 
 
 
+
 const RecycleBin = () => {
     const axiosSecure = useAxiosPrivate();
-    const { data: deletedUsers = [] } = useQuery({
+    const { data: deletedUsers = [], refetch } = useQuery({
         queryKey: ['deletedUsers'],
         queryFn: async () => {
             const result = await axiosSecure.get('/deletedUsers');
             return result.data
         }
     })
+
+    const handelRestore = async (user) => {
+        try {
+            const res = await axiosSecure.delete(`/deletedUsers/${user._id}`);
+            console.log(res);
+            if (res.data.deletedCount > 0) {
+
+                await axiosSecure.post('/users', { user })
+                refetch();
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <div>
             <h1>Total Deleted Users {deletedUsers.length}</h1>
@@ -31,12 +47,12 @@ const RecycleBin = () => {
                     </thead>
                     <tbody>
                         {
-                            deletedUsers.map((users, index) => <tr key={users._id}>
+                            deletedUsers.map((user, index) => <tr key={user._id}>
                                 <th>{index + 1}</th>
-                                <td>{users.name}</td>
-                                <td>{users.email}</td>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
                                 <th>
-                                    <button className="btn btn-wide btn-error  hover:btn-info">
+                                    <button onClick={() => handelRestore(user)} className="btn btn-wide btn-error  hover:btn-info">
                                         <MdRestorePage />
                                     </button>
                                 </th>
